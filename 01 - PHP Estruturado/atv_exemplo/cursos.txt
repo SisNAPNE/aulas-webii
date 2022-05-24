@@ -1,0 +1,12 @@
+1
+EMI - Informática#INFO#4
+2
+Tecnólogo em Análise e Desenvolvimento#TADS#3
+3
+Licenciatura em Física#LFIS#4
+4
+EMI - Meio Ambiente#MAMB#4
+5
+Licenciatura em Ciências Sociais#LCS#4
+6
+EMI - Mecânica#MEC#4
