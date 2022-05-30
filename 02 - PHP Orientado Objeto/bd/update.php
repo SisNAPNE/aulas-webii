@@ -1,79 +1,20 @@
 <?php
 
-    class BD {
-        private $DB_NOME = "dwii";
-        private $DB_USUARIO = "root";
-        private $DB_SENHA = "Gil.Eduardo12";
-        private $DB_CHARSET = "utf8";
+    $DB_NOME = "dwii";
+    $DB_USUARIO = "root";
+    $DB_SENHA = "*******";
+    $DB_CHARSET = "utf8";
 
-        public function connection() {
-            $str_conn = "mysql:host=localhost;dbname=".$this->DB_NOME;
+    $str_conn = "mysql:host=localhost;dbname=".$DB_NOME;
 
-    		return new PDO($str_conn, $this->DB_USUARIO, $this->DB_SENHA,
-                array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES ".$this->DB_CHARSET));
-    	}
-
-        public function select() {
-            $conn = $this->connection();
-    		$stmt = $conn->prepare("SELECT * FROM tb_alunos LIMIT 3");
-            $stmt->execute();
-
-            return $stmt;
-        }
-
-        public function insert($dados) {
-
-            $sql = "INSERT INTO tb_alunos(nome, curso, turma) VALUES(";
-
-            $flag = 0;
-            foreach($dados as $campo => $valor) {
-                if($flag == 0) {
-                    $sql .= "'$valor'";
-                    $flag = 1;
-                }
-                else { $sql .= ", '$valor'"; }
-            }
-            $sql .= ")";
-
-            $conn = $this->connection();
-    		$stmt = $conn->prepare($sql);
-            $stmt->execute();
-
-            return $stmt;
-        }
-
-        public function update($dados, $id) {
+    $conn = new PDO($str_conn, $DB_USUARIO, $DB_SENHA,
+                array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES ".$DB_CHARSET));
         
-            $sql = "UPDATE tb_cursos SET ";
+    $sql = "UPDATE tb_cursos SET nome='Tecnólogo em Manutenção Industrial', 
+        sigla='TMI', tempo='3' WHERE id=6";
 
-            $flag = 0;
-            foreach($dados as $campo => $valor) {
-                if($flag == 0) { $sql .= "$campo=:$campo"; }
-                else { $sql .= ", $campo=:$campo"; }
-                $flag = 1;
-            }
-
-            $sql .= " WHERE id=$id";
-
-            $conn = $this->connection();
-    		$stmt = $conn->prepare($sql);
-
-            foreach($dados as $campo => &$valor) {
-                $stmt->bindParam($campo, $valor);
-            }
-
-            $stmt->execute();
-            return $stmt;
-        }
-    }
-
-    $dados = array("nome" => "Licenciatura em Ciências Sociais",
-            "sigla" => "LSC",
-            "tempo" => 4);
-
-    $obj = new BD();
-    $ret = $obj->update($dados, 5);
-
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    
     echo "ALTERADO COM SUCESSO!";
-
 ?>

@@ -10,10 +10,11 @@
     $conn = new PDO($str_conn, $DB_USUARIO, $DB_SENHA,
                 array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES ".$DB_CHARSET));
         
-    $sql = "DELETE FROM tb_cursos WHERE id=6";
-
-    $stmt = $conn->prepare($sql);
+    $stmt = $conn->prepare("SELECT * FROM tb_cursos LIMIT 3");
     $stmt->execute();
-    
-    echo "REMOVIDO COM SUCESSO!";
+
+    while($row = $stmt->fetchObject()) {
+        echo "<h4>".$row->id." - ".$row->nome."</h4>";
+    }
+
 ?>

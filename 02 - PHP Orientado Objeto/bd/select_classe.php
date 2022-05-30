@@ -3,7 +3,7 @@
     class BD {
         private $DB_NOME = "dwii";
         private $DB_USUARIO = "root";
-        private $DB_SENHA = "Gil.Eduardo12";
+        private $DB_SENHA = "*******";
         private $DB_CHARSET = "utf8";
 
         public function connection() {
