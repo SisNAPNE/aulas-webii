@@ -3,7 +3,8 @@
 	$var = array(	"Maria"	=> 25, 
 				"João"	=> 44,
 				"José"	=> 12,
-				"Neusa"	=> 73
+				"Neusa"	=> 73,
+				"Neusa"	=> 65,
 			);
 
 	foreach ($var as $chave => $valor) {
