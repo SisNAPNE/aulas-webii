@@ -1,7 +1,6 @@
 <?php
-
 	// Função para carregar automaticamente todas as classes padrão
-	function __autoload($class_name) {
+	function autoload($class_name) {
 
 		$ABSPATH = dirname( __FILE__ );
 
@@ -22,5 +21,7 @@
 		} else {
 			require_once $file;
 		}
+	}
 
-	} // __autoload
+	spl_autoload_register('autoload');
+

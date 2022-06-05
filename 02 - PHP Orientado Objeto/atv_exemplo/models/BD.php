@@ -12,7 +12,7 @@
                 array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES ".config::DB_CHARSET));
     	}
 
-        public function select($tabela, $orderby="") {
+        public static function select($tabela, $orderby="") {
 
             $conn = self::connection();
     		$stmt = $conn->prepare("SELECT * FROM $tabela $orderby" );
@@ -21,7 +21,7 @@
             return $stmt;
         }
 
-        public function selectFind($tabela, $condicao) {
+        public static function selectFind($tabela, $condicao) {
 
             $sql = "SELECT * FROM $tabela WHERE $condicao";
 
