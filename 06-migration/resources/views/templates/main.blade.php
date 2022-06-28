@@ -39,7 +39,8 @@
                                 <span class="ps-1 text-white">Organização</span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="{{route('clientes.index')}}" class="dropdown-item">Clientes</a></li>
+                                <li><a href="{{route('enderecos.index')}}" class="dropdown-item">Endereços</a></li>
+                                <li><a href="" class="dropdown-item">Clientes</a></li>
                                 <li><a href="" class="dropdown-item">Veterinários</a></li>
                                 <li><a href="" class="dropdown-item">Especialidades</a></li>
                             </ul>
@@ -134,10 +135,14 @@
 
     <script type="text/javascript">
 
-        function showInfoModal() {
-            $('#infoModal').modal().find('.modal-body').html("");
-            for(let a=0; a< arguments.length; a++) {
-                $('#infoModal').modal().find('.modal-body').append("<b>" + arguments[a] + "</b><br>");
+        function showInfoModal(data, fields) {
+
+            data = JSON.parse(data)
+            fields = JSON.parse(fields)
+            
+            $('#infoModal').modal().find('.modal-body').html(""); 
+            for(let a=0; a<fields.length; a++) {
+                $('#infoModal').modal().find('.modal-body').append("<b>" + data[fields[a]] + "</b><br>");
             }
             $("#infoModal").modal('show');
         }
