@@ -3,23 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\PermissionController;
+use App\Facades\UserPermissions;
 
 class CursoController extends Controller {
     
     public function index() {        
 
-        if(!PermissionController::isAuthorized('cursos.index')) {
+        if(!UserPermissions::isAuthorized('cursos.index')) {
             abort(403);
         }
 
-        $permissions = session('user_permissions');
-        return view('cursos.index', compact('permissions'));
+        return view('cursos.index');
     }
 
     public function create() {
 
-        if(!PermissionController::isAuthorized('cursos.create')) {
+        if(!UserPermissions::isAuthorized('cursos.create')) {
             abort(403);
         }
 
@@ -32,7 +31,7 @@ class CursoController extends Controller {
 
     public function show($id) {
 
-        if(!PermissionController::isAuthorized('cursos.show')) {
+        if(!UserPermissions::isAuthorized('cursos.show')) {
             abort(403);
         }
 
@@ -41,7 +40,7 @@ class CursoController extends Controller {
 
     public function edit($id) {
 
-        if(!PermissionController::isAuthorized('cursos.edit')) {
+        if(!UserPermissions::isAuthorized('cursos.edit')) {
             abort(403);
         }
 
@@ -54,7 +53,7 @@ class CursoController extends Controller {
 
     public function destroy($id) {
 
-        if(!PermissionController::isAuthorized('cursos.destroy')) {
+        if(!UserPermissions::isAuthorized('cursos.destroy')) {
             abort(403);
         }
 

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use App\Models\Type;
+use App\Facades\UserPermissions;
 
 class RegisteredUserController extends Controller
 {
@@ -51,6 +52,9 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+
+        // Carregando as Permissões do Usuário / Sessão
+        UserPermissions::loadPermissions(Auth::user()->type_id);
 
         return redirect(RouteServiceProvider::HOME);
     }

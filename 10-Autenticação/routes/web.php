@@ -24,4 +24,8 @@ Route::get('/dashboard', function () {
 Route::resource('/cursos', '\App\Http\Controllers\CursoController')
     ->middleware(['auth']);
 
+Route::get('/testfacade', function () {
+    return UserPermissions::test();
+});
+
 require __DIR__.'/auth.php';
