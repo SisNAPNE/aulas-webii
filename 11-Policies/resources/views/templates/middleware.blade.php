@@ -66,7 +66,7 @@
                 <div class="col">
                     <h3 class="display-7 text-secondary d-none d-md-block"><b>{{ $titulo }}</b></h3>
                 </div>
-                @can('create', 'App/Models/Curso')
+                @can('create', Curso::class)
                     @if(isset($rota))
                         <div class="col d-flex justify-content-end">
                             <a href= "{{ route($rota) }}" class="btn btn-secondary">
