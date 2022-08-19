@@ -5,22 +5,22 @@ use App\Models\Permission;
  
 class UserPermissions {
    
-    public static function loadPermissions($user_paper) {
+    public static function loadPermissions($user_role) {
 
        $sess = Array();   
-       $perm = Permission::with('role')->where('paper_id', $user_paper)->get();
+       $perm = Permission::with('resource')->where('role_id', $user_role)->get();
        
        foreach($perm as $item) {
-           $sess[$item->role->name] = (boolean) $item->permissao;
+           $sess[$item->resource->name] = (boolean) $item->permissao;
        }
        
        session(['user_permissions' => $sess]);
     }
    
-    public static function isAuthorized($rule) {
+    public static function isAuthorized($resource) {
         
         $permissions = session('user_permissions');
-        return $permissions[$rule];
+        return $permissions[$resource];
     }
    
     public static function test() {

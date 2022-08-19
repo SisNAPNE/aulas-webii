@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
-use App\Models\Paper;
+use App\Models\Role;
 use App\Facades\UserPermissions;
 
 class RegisteredUserController extends Controller
@@ -22,8 +22,8 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        $papers = Paper::orderBy('name')->get();
-        return view('auth.register', compact('papers'));
+        $roles = Role::orderBy('name')->get();
+        return view('auth.register', compact('roles'));
     }
 
     /**
@@ -46,7 +46,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'paper_id' => $request->paper,
+            'role_id' => $request->role,
         ]);
 
         event(new Registered($user));
@@ -54,7 +54,7 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         // Carregando as Permissões do Usuário / Sessão
-        UserPermissions::loadPermissions(Auth::user()->paper_id);
+        UserPermissions::loadPermissions(Auth::user()->role_id);
 
         return redirect(RouteServiceProvider::HOME);
     }
