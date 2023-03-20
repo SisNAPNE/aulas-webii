@@ -1,5 +1,5 @@
 <?php
-    include_once('rotina_tabela.php');
+    include_once 'rotina_tabela.php';
 ?>
 
 <!DOCTYPE html>
