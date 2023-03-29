@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Client - TADS Students System</title>
+        <!-- Bootstrap 5 / CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    </head>
+    <body>
+        <nav class="navbar sticky-top navbar-expand-md navbar-dark bg-success">
+            <div class="container-fluid">
+                <a href="index.html" class="navbar-brand ms-sm-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="#FFF" class="bi bi-motherboard-fill" viewBox="0 0 16 16">
+                        <path d="M5 7h3V4H5v3Z"/>
+                        <path d="M1 2a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-2H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 9H1V8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6H1V5H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 2H1Zm11 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7Zm2 0a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7ZM3.5 10a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6Zm0 2a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6ZM4 4h-.5a.5.5 0 0 0 0 1H4v1h-.5a.5.5 0 0 0 0 1H4a1 1 0 0 0 1 1v.5a.5.5 0 0 0 1 0V8h1v.5a.5.5 0 0 0 1 0V8a1 1 0 0 0 1-1h.5a.5.5 0 0 0 0-1H9V5h.5a.5.5 0 0 0 0-1H9a1 1 0 0 0-1-1v-.5a.5.5 0 0 0-1 0V3H6v-.5a.5.5 0 0 0-1 0V3a1 1 0 0 0-1 1Zm7 7.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 0-.5.5Z"/>
+                    </svg>
+                    <span class="ms-3 fs-5">TADS: Painel de Estudantes</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="container py-4">
+            <div class="row">
+                <h1 class="text-success text-center mt-3"><b>SISTEMA CLIENTE / FRONT</b></h1>
+                <h4 class="text-success text-center mt-1 mb-4">Monitoramento</h4>
+                <hr>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <table class="table align-middle caption-top table-striped" id="table">
+                        <caption class="text-center fw-bold fs-4"></caption>
+                        <thead>
+                        <tr>
+                            <th scope="col" class="text-center">ID</th>
+                            <th scope="col" class="text-center">NOME</th>
+                            <th scope="col" class="d-none d-md-table-cell text-center">TURMA</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+    
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <div id="piechart" style="width: 600px; height: 500px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar fixed-bottom navbar-dark bg-success">
+            <div class="container-fluid">
+                <span class="text-white fw-light"></span>
+            </div>
+        </nav>
+    </body>
+
+    <!-- Bootstrap 5 / JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- JQuery / JS -->
+    <script src="jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript">
+        
+
+        setInterval(function () {
+
+
+            var URL_table = "http://localhost/atividade_php02/public/read.php";
+            try {
+                $.get(URL_table, function(data, status) {
+
+                    var obj = JSON.parse(data)
+
+                    $('#table > tbody').text('')
+    
+                    if(obj.length < 10) $('#table > caption').text("0" + obj.length + " Estudantes(s) Ativo(s)")
+                    else $('#table > caption').text(obj.length + " Estudantes(s) Ativo(s)")
+
+                    obj.map(function(item, i) {
+                        $('#table > tbody:last-child').append("<tr><td class='text-center'>" + item.id + 
+                                "</td><td class='d-none d-md-table-cell text-center'>" + item.nome + 
+                                "<td class='d-none d-md-table-cell text-center'>" + item.turma + "</td></tr>");
+                    })
+                })    
+
+            }
+            catch (e) {
+                alert(e)
+            }
+
+            let URL_graph = "http://localhost/atividade_php02/public/monitor.php";
+            try {
+            
+                google.charts.load('current', {'packages':['corechart']});
+                google.charts.setOnLoadCallback(drawChart);
+
+                function drawChart() {
+
+                    $.get(URL_graph, function(data, status) {
+
+                        var list = JSON.parse(data)
+                        var graph = [['Turma', 'Total']]
+
+                        list.map(function(item, i) {
+                            graph.push([item.turma, parseInt(item.total)]);
+                        })
+                        console.log(graph);
+
+                        var data = google.visualization.arrayToDataTable(graph);
+
+                        var options = {
+                            title: 'Estudantes / Turmas'
+                        }
+
+                        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                        chart.draw(data, options);
+                    }) 
+                }
+            }
+            catch (e) {
+                alert(e)
+            }
+                
+        }, 2000)
+
+    </script>
+
+    <script type="text/javascript">
+        
+    </script>
+        
+</html>
