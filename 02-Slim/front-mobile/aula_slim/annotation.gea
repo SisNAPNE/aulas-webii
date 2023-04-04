@@ -4,9 +4,11 @@ NAVIGATION INSTALL:
 1) npm install @react-navigation/native @react-navigation/native-stack
 2) npm install react-native-screens react-native-safe-area-context
 
----------------------
-VECTOR-ICONS INSTALL:
----------------------
+---------------------------------------------------------------------------
+VECTOR-ICONS INSTALL (https://github.com/oblador/react-native-vector-icons):
+---------------------------------------------------------------------------
+Ícones: (https://oblador.github.io/react-native-vector-icons/)
+
 1) npm install --save react-native-vector-icons
 
 2) Editar o arquivo “/android/app/build.gradle”:

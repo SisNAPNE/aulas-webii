@@ -16,7 +16,7 @@ const icons = {
       name: 'whatsapp'
     },
     Graph:{
-        name: 'chart-bar'
+        name: 'cellphone-message'
     },
 }
 
@@ -75,7 +75,7 @@ function Tabs({route}) {
                 name="Graph" 
                 component={Graph} 
                 options={{ 
-                    title: 'Sensores',
+                    title: 'Histórico',
                     headerTintColor: '#FFF',
                     headerTitleStyle: {
                         fontWeight: 'bold',
