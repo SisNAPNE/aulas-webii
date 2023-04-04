@@ -1,0 +1,41 @@
+-------------------
+NAVIGATION INSTALL:
+-------------------
+1) npm install @react-navigation/native @react-navigation/native-stack
+2) npm install react-native-screens react-native-safe-area-context
+
+---------------------
+VECTOR-ICONS INSTALL:
+---------------------
+1) npm install --save react-native-vector-icons
+
+2) Editar o arquivo “/android/app/build.gradle”:
+
+project.ext.vectoricons = [
+    iconFontNames: [ 'MaterialIcons.ttf', 'MaterialCommunityIcons.ttf' ]
+    // Nome do conjunto de ícones (fontes) que deseja utilizar
+]
+
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+
+-----------------------
+TAB-NAVIGATION INSTALL:
+-----------------------
+1) npm install @react-navigation/bottom-tabs
+
+-------------------------------------------------------------------------
+CHART-KIT INSTALL (https://www.npmjs.com/package/react-native-chart-kit):
+-------------------------------------------------------------------------
+1) npm i react-native-chart-kit
+2) yarn add react-native-chart-kit
+3) yarn add react-native-svg 			(install peer dependencies)
+
+--------------
+AXIOS INSTALL:
+--------------
+1) npm install axios --save
+
+-----------------------------
+- ÍCONE E NOME DA APLICAÇÃO -
+-----------------------------
+1) android/app/src/main/res/values/
