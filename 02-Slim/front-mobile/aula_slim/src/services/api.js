@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: 'https://slim.ifprinteligente.com.br'
+    baseURL: 'http://10.0.2.2:8012'
 })
 
 export default api
