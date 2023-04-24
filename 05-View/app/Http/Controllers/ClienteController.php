@@ -14,6 +14,7 @@ class ClienteController extends Controller {
     ]];
 
     public function __construct() {
+        
         $aux = session('clientes');
 
         if(!isset($aux)) {

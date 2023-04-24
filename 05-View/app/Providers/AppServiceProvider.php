@@ -16,5 +16,6 @@ class AppServiceProvider extends ServiceProvider {
         
         // Registra o componente com o alias "datalist"
        Blade::component('components.datalist', 'datalist');
+       Blade::component('components.datatable', 'datatable');
     }
 }

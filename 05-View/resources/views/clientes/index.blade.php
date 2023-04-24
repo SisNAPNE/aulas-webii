@@ -7,14 +7,13 @@
 
     <div class="row">
         <div class="col">
-            
-            <!-- Utiliza o componente "datalist" criado -->
-            <x-datalist 
+            <x-datatable 
+                title="Clientes" 
+                crud="clientes" 
                 :header="['ID', 'NOME', 'E-MAIL', 'AÇÕES']" 
                 :data="$dados"
                 :hide="[true, false, true, false]" 
-            />
-
+            /> 
         </div>
     </div>
 @endsection

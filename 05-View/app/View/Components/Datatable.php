@@ -4,8 +4,8 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Datalist extends Component {
-
+class Datatable extends Component {
+    
     public $title;
     public $crud;
     public $header;
@@ -13,15 +13,15 @@ class Datalist extends Component {
     public $hide;
 
     public function __construct($title, $crud, $header, $data, $hide) {
-        $this->title = $title;
-        $this->crud = $crud;   
+
+        $this->title = $title;   
+        $this->crud = $crud;
         $this->header = $header;
-        $this->data = $data;    
-        $this->hide = $hide;   
+        $this->data = $data;
+        $this->hide = $hide;
     }
 
     public function render() {
-
-        return view('components.datalist');
+        return view('components.datatable');
     }
 }

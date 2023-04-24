@@ -1,5 +1,4 @@
 <div>
-    
     <table class="table align-middle caption-top table-striped">
         <caption>Tabela de <b>{{ $title }}</b></caption>
         <thead>
@@ -49,5 +48,4 @@
             @endforeach
         </tbody>
     </table>
-
 </div>
