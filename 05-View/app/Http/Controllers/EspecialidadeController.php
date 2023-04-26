@@ -6,14 +6,26 @@ use Illuminate\Http\Request;
 
 class EspecialidadeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    
+    public $especialidades = [[
+        "id" => 1,
+        "nome" => "Cardiologista",
+        "descricao" => "Profissinal especialista em questões do coração"
+    ]];
+
+    public function __construct() {
+        
+        $aux = session('especialidades');
+
+        if(!isset($aux)) {
+            session(['especialidades' => $this->especialidades]);
+        }
+    }
+
+    public function index() {
+        
+        $dados = session('especialidades');
+        return view('especialidades.index', compact(['dados']));
     }
 
     /**
