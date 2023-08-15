@@ -1,5 +1,6 @@
 <?php
     
+    include_once "database.php";
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +42,7 @@
                 </tr>
               </thead>
               <tbody>
-                <!-- loadTable(); -->
+                 <?php loadTabela(); ?>
               </tbody>
             </table>  
         </div>
