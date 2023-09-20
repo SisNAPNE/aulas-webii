@@ -18,6 +18,7 @@ class CreateIntegrantesTable extends Migration
             $table->string('nome');
             $table->text('biografia');
             $table->string('foto')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

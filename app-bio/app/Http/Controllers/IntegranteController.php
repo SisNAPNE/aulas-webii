@@ -11,7 +11,7 @@ class IntegranteController extends Controller {
 
     public function index() {
         
-        $data = Integrante::orderBy('id')->get();
+        $data = Integrante::orderBy('nome')->get();
         return view('integrante.index', compact('data'));
     }
 
