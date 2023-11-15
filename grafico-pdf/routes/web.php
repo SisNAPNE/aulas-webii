@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\GraficoController@loadDataGraphs')
     ->name('graphs');
 
-Route::get('/relatorio', 'App\Http\Controllers\RelatorioController@createReport\{tipo}')
+Route::get('/relatorio/{tipo}', 'App\Http\Controllers\RelatorioController@createReport')
     ->name('reports');
 
 
