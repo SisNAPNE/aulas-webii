@@ -10,6 +10,8 @@ class HTTPClientController extends Controller
     public function getApiData() {
 
         $response = Http::get('https://randomuser.me/api/');
-        return $response->body();
+
+        $data = json_decode($response->body());
+        return $data;
     }
 }
